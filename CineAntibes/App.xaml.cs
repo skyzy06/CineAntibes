@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using CineAntibes.Views;
+using Xamarin.Forms;
 
 namespace CineAntibes
 {
@@ -8,7 +9,7 @@ namespace CineAntibes
         {
             InitializeComponent();
 
-            MainPage = new CineAntibesPage();
+            MainPage = new Home();
         }
 
         protected override void OnStart()
