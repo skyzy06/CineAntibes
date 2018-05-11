@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:CineAntibes" xmlns:cells="clr-namespace:CineAntibes.DataTemplates" x:Class="CineAntibes.Views.Home">
-    <ScrollView>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:local="clr-namespace:CineAntibes"
+             xmlns:cells="clr-namespace:CineAntibes.DataTemplates"
+             ios:Page.UseSafeArea="true"
+             x:Class="CineAntibes.Views.Home"
+             BackgroundColor="#CA3C1F">
+    <ScrollView BackgroundColor="White">
         <Grid Margin="20">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -24,7 +31,11 @@
             <Image Source="ic_contact" WidthRequest="50" HeightRequest="50" Grid.Column="0" Grid.Row="2" />
             <Image Source="ic_contact" WidthRequest="50" HeightRequest="50" Grid.Column="1" Grid.Row="2" />
             <Image Source="ic_contact" WidthRequest="50" HeightRequest="50" Grid.Column="2" Grid.Row="2" />
-            <cells:HomeCell Image="ic_on_display" Title="Test" Grid.Column="3" Grid.Row="2" />
+            <cells:HomeCell Image="ic_on_display" Title="A l'affiche" Grid.Column="3" Grid.Row="2" />
+            <cells:HomeCell Image="ic_access_time" Title="Dans l'heure" Grid.Column="0" Grid.Row="3" />
+            <cells:HomeCell Image="ic_contact" Title="Contact" Grid.Column="1" Grid.Row="3" />
+            <cells:HomeCell Image="ic_info" Title="Evénements" Grid.Column="2" Grid.Row="3" />
+            <cells:HomeCell Image="ic_3d_glasses" Title="Films 3D" Grid.Column="3" Grid.Row="3" />
         </Grid>
     </ScrollView>
 </ContentPage>
