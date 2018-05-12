@@ -1,17 +1,12 @@
-﻿using System;
-
-using Android.App;
-using Android.Content;
+﻿using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
+using Android.Views;
 
 namespace CineAntibes.Droid
 {
-    [Activity(Label = "CineAntibes", Icon = "@drawable/ic_launcher", Theme = "@style/MyTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+	[Activity(Label = "CineAntibes", Icon = "@drawable/ic_launcher", Theme = "@style/MyTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
@@ -21,6 +16,12 @@ namespace CineAntibes.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+
+			if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
+            {
+				Window.AddFlags(WindowManagerFlags.DrawsSystemBarBackgrounds);
+				Window.SetStatusBarColor(Android.Graphics.Color.ParseColor("#CA3C1F")); 
+            }
 
             LoadApplication(new App());
         }

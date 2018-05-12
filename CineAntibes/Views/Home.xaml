@@ -20,22 +20,17 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
-            <Image Source="ic_contact" WidthRequest="50" HeightRequest="50" Grid.Column="0" Grid.Row="0" />
-            <Image Source="ic_on_display" WidthRequest="50" HeightRequest="50" Grid.Column="1" Grid.Row="0" />
-            <Image Source="ic_contact" WidthRequest="50" HeightRequest="50" Grid.Column="2" Grid.Row="0" />
-            <Image Source="ic_contact" WidthRequest="50" HeightRequest="50" Grid.Column="3" Grid.Row="0" />
-            <Image Source="ic_contact" WidthRequest="50" HeightRequest="50" Grid.Column="0" Grid.Row="1" />
-            <Image Source="ic_contact" WidthRequest="50" HeightRequest="50" Grid.Column="1" Grid.Row="1" />
-            <Image Source="ic_contact" WidthRequest="50" HeightRequest="50" Grid.Column="2" Grid.Row="1" />
-            <Image Source="ic_contact" WidthRequest="50" HeightRequest="50" Grid.Column="3" Grid.Row="1" />
-            <Image Source="ic_contact" WidthRequest="50" HeightRequest="50" Grid.Column="0" Grid.Row="2" />
-            <Image Source="ic_contact" WidthRequest="50" HeightRequest="50" Grid.Column="1" Grid.Row="2" />
-            <Image Source="ic_contact" WidthRequest="50" HeightRequest="50" Grid.Column="2" Grid.Row="2" />
-            <cells:HomeCell Image="ic_on_display" Title="A l'affiche" Grid.Column="3" Grid.Row="2" />
-            <cells:HomeCell Image="ic_access_time" Title="Dans l'heure" Grid.Column="0" Grid.Row="3" />
-            <cells:HomeCell Image="ic_contact" Title="Contact" Grid.Column="1" Grid.Row="3" />
-            <cells:HomeCell Image="ic_info" Title="Evénements" Grid.Column="2" Grid.Row="3" />
-            <cells:HomeCell Image="ic_3d_glasses" Title="Films 3D" Grid.Column="3" Grid.Row="3" />
+            <cells:HomeCell Image="ic_access_time" Title="Horaires" Grid.Column="0" Grid.Row="0" />
+            <cells:HomeCell Image="ic_on_display" Title="A l'affiche" Grid.Column="1" Grid.Row="0" />
+            <cells:HomeCell Image="ic_movie_creation" Title="Prochainement" Grid.Column="2" Grid.Row="0" />
+            <cells:HomeCell Image="ic_exposure_plus_1" Title="Dans l'heure" Grid.Column="3" Grid.Row="0" />
+            <cells:HomeCell Image="ic_group" Title="Par genre" Grid.Column="0" Grid.Row="1" />
+            <cells:HomeCell Image="ic_3d_glasses" Title="Films 3D" Grid.Column="1" Grid.Row="1" />
+            <cells:HomeCell Image="ic_info" Title="Evénements" Grid.Column="2" Grid.Row="1" />
+            <cells:HomeCell Image="ic_contact" Title="Contact" Grid.Column="3" Grid.Row="1" />
+            <cells:HomeCell Image="ic_euro_symbol" Title="Tarifs" Grid.Column="0" Grid.Row="2" />
+            <cells:HomeCell Image="ic_navigation" Title="Plan d'accès" Grid.Column="1" Grid.Row="2" />
+            <cells:HomeCell Image="ic_playlist_add_check" Title="Mes réservations" Grid.Column="2" Grid.Row="2" />
         </Grid>
     </ScrollView>
 </ContentPage>

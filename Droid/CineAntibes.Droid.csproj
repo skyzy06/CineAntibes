@@ -180,6 +180,36 @@
     <AndroidResource Include="Resources\drawable-xhdpi\ic_3d_glasses.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_3d_glasses.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_3d_glasses.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_exposure_plus_1.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_exposure_plus_1.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_exposure_plus_1.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_exposure_plus_1.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_exposure_plus_1.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_playlist_add_check.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_playlist_add_check.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_playlist_add_check.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_playlist_add_check.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_playlist_add_check.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_group.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_group.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_group.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_group.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_group.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_navigation.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_navigation.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_navigation.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_navigation.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_navigation.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_movie_creation.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_movie_creation.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_movie_creation.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_movie_creation.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_movie_creation.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_euro_symbol.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_euro_symbol.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_euro_symbol.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_euro_symbol.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_euro_symbol.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Utils\" />

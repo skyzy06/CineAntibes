@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CineAntibes.DataTemplates.HomeCell">
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CineAntibes.DataTemplates.HomeCell">
     <StackLayout>
-        <Image x:Name="icon" Source="{Binding Image}" HeightRequest="75" Aspect="AspectFit" BackgroundColor="Blue" />
-        <Label x:Name="title" Text="{Binding Title}" BackgroundColor="Green" HorizontalTextAlignment="Center" />
+        <Image x:Name="icon" Source="{Binding Image}" HeightRequest="75" Aspect="AspectFit" Opacity="0.6"/>
+        <Label x:Name="title" Text="{Binding Title}" HorizontalTextAlignment="Center" />
     </StackLayout>
 </ContentView>
