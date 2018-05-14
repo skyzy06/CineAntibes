@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CineAntibes.App">
+<Application xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="CineAntibes.App">
     <Application.Resources>
         <!-- Application resource dictionary -->
+        <ResourceDictionary>
+            <!-- #Region : Theme color -->
+            <Color x:Key="appMainColor">#CA3C1F</Color>
+            <Color x:Key="appMainDarkColor">#AD331A</Color>
+            <Color x:Key="appAccentColor">#FFC107</Color>
+
+            <Color x:Key="appNavBarItemColor">#FFFFFF</Color>
+            <!-- #EndRegion -->
+
+            <!-- #Region : Style for navigation page -->
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{DynamicResource appMainDarkColor}"/>
+                <Setter Property="BarTextColor" Value="{DynamicResource appNavBarItemColor}"/>
+            </Style>
+            <!-- #EndRegion -->
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

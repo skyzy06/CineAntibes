@@ -1,7 +1,9 @@
-﻿using Android.App;
+﻿using System.Reflection;
+using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Views;
+using Xamarin.Forms;
 
 namespace CineAntibes.Droid
 {
@@ -15,15 +17,40 @@ namespace CineAntibes.Droid
 
             base.OnCreate(bundle);
 
-            global::Xamarin.Forms.Forms.Init(this, bundle);
+			Xamarin.Forms.Forms.Init(this, bundle);
 
-			if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
+			var app = new App();
+
+			#region theme color
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
             {
-				Window.AddFlags(WindowManagerFlags.DrawsSystemBarBackgrounds);
-				Window.SetStatusBarColor(Android.Graphics.Color.ParseColor("#CA3C1F")); 
+                Window.AddFlags(WindowManagerFlags.DrawsSystemBarBackgrounds);
+				Window.AddFlags(WindowManagerFlags.TranslucentStatus);
             }
 
-            LoadApplication(new App());
+            app.OnUseCustomTheme += (s, a) =>
+            {
+                if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
+                {
+					Color mainColor = (Color)Xamarin.Forms.Application.Current.Resources["appMainColor"];
+					Color mainColorDark = (Color)Xamarin.Forms.Application.Current.Resources["appMainDarkColor"];
+                    SetStatusBarColor(PCLToAndroidColor(mainColor));
+                    Window.SetNavigationBarColor(PCLToAndroidColor(mainColorDark));
+
+                    var prop = typeof(Color).GetRuntimeProperty(nameof(Color.Accent));
+                    var setter = prop?.SetMethod;
+                    // Invoke the setter method of the Color.Accent property to overwrite it with the custom accent color
+					setter?.Invoke(Color.Accent, new object[] { (Color)Xamarin.Forms.Application.Current.Resources["appAccentColor"] });
+                }
+            };
+            #endregion
+
+			LoadApplication(app);
+        }
+
+		public static Android.Graphics.Color PCLToAndroidColor(Color color)
+        {
+            return Xamarin.Forms.Platform.Android.ColorExtensions.ToAndroid(color);
         }
     }
 }
