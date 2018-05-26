@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          x:Class="CineAntibes.DataTemplates.MenuCell">
+    <ViewCell.View>
+        <Grid Style="{StaticResource menuEntryGrid}">
+            <Grid.Resources>
+                <ResourceDictionary>
+                    <Style x:Key="menuEntryGrid" TargetType="Grid">
+                        <Setter Property="Margin" Value="10" />
+                    </Style>
+                    <Style x:Key="icon" TargetType="Image" BasedOn="{StaticResource iconBase}">
+                        <Setter Property="Margin" Value="5" />
+                        <Setter Property="WidthRequest" Value="25" />
+                    </Style>
+                    <Style x:Key="label" TargetType="Label" BasedOn="{StaticResource h1}">
+                        <Setter Property="VerticalTextAlignment" Value="Center" />
+                    </Style>
+                </ResourceDictionary>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Image Source="{Binding IconSource}" Style="{StaticResource icon}" Grid.Column="0" />
+            <Label Text="{Binding Title}" Style="{StaticResource label}" Grid.Column="1" />
+        </Grid>
+    </ViewCell.View>
+</ViewCell>

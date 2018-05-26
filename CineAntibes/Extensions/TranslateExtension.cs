@@ -6,13 +6,13 @@ using CineAntibes.Utils;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace CineAntibes.Extension
+namespace CineAntibes.Extensions
 {
     [ContentProperty("Text")]
     public class TranslateExtension : IMarkupExtension
     {
         readonly CultureInfo ci;
-        const string ResourceId = "UsingResxLocalization.Resx.AppResources";
+        const string ResourceId = "CineAntibes.Resources.AppResources";
 
         static readonly Lazy<ResourceManager> ResMgr = new Lazy<ResourceManager>(() => new ResourceManager(ResourceId, IntrospectionExtensions.GetTypeInfo(typeof(TranslateExtension)).Assembly));
 

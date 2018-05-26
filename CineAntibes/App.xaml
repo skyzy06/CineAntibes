@@ -19,6 +19,29 @@
                 <Setter Property="BarTextColor" Value="{DynamicResource appNavBarItemColor}"/>
             </Style>
             <!-- #EndRegion -->
+
+            <!-- #Region : Base style -->
+            <Style x:Key="title" TargetType="Label">
+                <Setter Property="FontSize" Value="24"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style x:Key="h1" TargetType="Label">
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style x:Key="h2" TargetType="Label">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style x:Key="normalText" TargetType="Label">
+                <Setter Property="FontSize" Value="12"/>
+            </Style>
+
+            <Style x:Key="iconBase" TargetType="Image">
+                <Setter Property="Opacity" Value="0.6"/>
+                <Setter Property="Aspect" Value="AspectFit"/>
+            </Style>
+            <!-- #EndRegion -->
         </ResourceDictionary>
     </Application.Resources>
 </Application>

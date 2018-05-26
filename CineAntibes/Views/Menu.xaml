@@ -1,8 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cells="clr-namespace:CineAntibes.DataTemplates"
+             xmlns:extensions="clr-namespace:CineAntibes.Extensions"
+             xmlns:viewModels="clr-namespace:CineAntibes.ViewModels"
              x:Class="CineAntibes.Views.Menu"
-             Title="LeftMenu">
+             Title="{extensions:Translate MenuTitle}"
+             Padding="0, 40, 0, 0">
+    
+    <ContentPage.BindingContext>
+        <viewModels:MenuViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- image height -->
+            <x:Double x:Key="imageMenuHeight">170</x:Double>
+
+            <!-- menu entry height -->
+            <x:Int32 x:Key="rowMenuheight">60</x:Int32>
+
+            <Style x:Key="imageHeaderMenu" TargetType="Image">
+                <Setter Property="Aspect" Value="AspectFit"/>
+                <Setter Property="Margin" Value="0,0,0,10"/>
+                <Setter Property="WidthRequest" Value="{StaticResource imageMenuHeight}"/>
+            </Style>
+            <Style x:Key="menuItemListView" TargetType="ListView">
+                <Setter Property="SeparatorColor" Value="Gray"/>
+                <Setter Property="RowHeight" Value="{StaticResource rowMenuheight}"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
+        <StackLayout>
+            <Image Source="logo.png" Style="{StaticResource imageHeaderMenu}"/>
+            <ListView
+                ItemsSource="{Binding MenuItemList}"
+                SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}"
+                Style="{StaticResource menuItemListView}">
+                <ListView.Footer>
+                    <StackLayout/>
+                </ListView.Footer>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <cells:MenuCell />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

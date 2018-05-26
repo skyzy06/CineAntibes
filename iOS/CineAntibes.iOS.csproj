@@ -178,6 +178,9 @@
   <ItemGroup>
     <BundleResource Include="Resources\Splashscreen.png" />
     <BundleResource Include="Resources\Splashscreen%402x.png" />
+    <BundleResource Include="Resources\logo.png" />
+    <BundleResource Include="Resources\hamburger.png" />
+    <BundleResource Include="Resources\hamburger%402x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.3.1.0.469394-pre1\build\netstandard2.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.3.1.0.469394-pre1\build\netstandard2.0\Xamarin.Forms.targets')" />

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 
-namespace CineAntibes.Views
+namespace CineAntibes.DataTemplates
 {
-    public partial class OnDisplay : ContentPage
+    public partial class MenuCell : ViewCell
     {
-        public OnDisplay()
+        public MenuCell()
         {
             InitializeComponent();
         }
