@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using CineAntibes.Models;
 using CineAntibes.Resources;
-using CineAntibes.Utils;
 using CineAntibes.Views;
 using Xamarin.Forms;
 
 namespace CineAntibes.ViewModels
 {
-    public class MenuViewModel : NotifyPropertyChanged
+    public class MenuViewModel : BaseViewModel
     {
         // Reference to the MasterDetailPage to change the current page
         public Main MainPage { protected get; set; }
@@ -81,7 +81,7 @@ namespace CineAntibes.ViewModels
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex.ToString());
+                Debug.WriteLine(ex.ToString());
             }
         }
         #endregion

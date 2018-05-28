@@ -17,7 +17,7 @@ namespace CineAntibes.Droid
 
             base.OnCreate(bundle);
 
-			Xamarin.Forms.Forms.Init(this, bundle);
+            Forms.Init(this, bundle);
 
 			var app = new App();
 
