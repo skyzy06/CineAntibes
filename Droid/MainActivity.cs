@@ -3,6 +3,7 @@ using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Views;
+using FFImageLoading.Forms.Platform;
 using Xamarin.Forms;
 
 namespace CineAntibes.Droid
@@ -18,6 +19,7 @@ namespace CineAntibes.Droid
             base.OnCreate(bundle);
 
             Forms.Init(this, bundle);
+            CachedImageRenderer.Init(true);
 
 			var app = new App();
 

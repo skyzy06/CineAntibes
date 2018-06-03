@@ -2,9 +2,9 @@
 
 namespace CineAntibes.DataTemplates
 {
-    public partial class MenuCell : ViewCell
+    public partial class WhatsOnCell : ViewCell
     {
-        public MenuCell()
+        public WhatsOnCell()
         {
             InitializeComponent();
         }

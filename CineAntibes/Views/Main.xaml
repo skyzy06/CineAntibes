@@ -4,7 +4,7 @@
                   xmlns:local="clr-namespace:CineAntibes.Views"
                   x:Class="CineAntibes.Views.Main">
     <MasterDetailPage.Master>
-        <local:Menu x:Name="menu" />
+        <local:Menu />
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
         <NavigationPage>

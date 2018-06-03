@@ -109,6 +109,21 @@
     <Reference Include="SQLitePCLRaw.batteries_v2">
       <HintPath>..\packages\SQLitePCLRaw.bundle_green.1.1.11\lib\Xamarin.iOS10\SQLitePCLRaw.batteries_v2.dll</HintPath>
     </Reference>
+    <Reference Include="WebP.Touch">
+      <HintPath>..\packages\WebP.Touch.1.0.8\lib\Xamarin.iOS10\WebP.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.4.1.823\lib\Xamarin.iOS10\FFImageLoading.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Platform">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.4.1.823\lib\Xamarin.iOS10\FFImageLoading.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Forms">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.4.1.823\lib\Xamarin.iOS10\FFImageLoading.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Forms.Platform">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.4.1.823\lib\Xamarin.iOS10\FFImageLoading.Forms.Platform.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CineAntibes\CineAntibes.csproj">
@@ -171,12 +186,16 @@
     <ImageAsset Include="Assets.xcassets\ic_euro_symbol.imageset\ic_euro_symbol.png" />
     <ImageAsset Include="Assets.xcassets\ic_euro_symbol.imageset\ic_euro_symbol_2x.png" />
     <ImageAsset Include="Assets.xcassets\ic_euro_symbol.imageset\ic_euro_symbol_3x.png" />
+    <ImageAsset Include="Assets.xcassets\sans_affiche.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\sans_affiche.imageset\sans_affiche.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Utils\" />
     <Folder Include="Assets.xcassets\ic_3d_glasses.imageset\" />
     <Folder Include="Interface\" />
+    <Folder Include="Assets.xcassets\sans_affiche.imageset\" />
+    <Folder Include="Renderer\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -188,6 +207,7 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Utils\Localize.cs" />
     <Compile Include="Interface\SQLiteImpl.cs" />
+    <Compile Include="Renderer\ExtendedLabelRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />

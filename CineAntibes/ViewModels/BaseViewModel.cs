@@ -4,6 +4,5 @@ namespace CineAntibes.ViewModels
 {
     public class BaseViewModel : NotifyPropertyChanged
     {
-        
     }
 }

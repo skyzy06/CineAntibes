@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Threading.Tasks;
 using CineAntibes.Database;
 using CineAntibes.Utils;
 using CineAntibes.Views;
@@ -9,6 +12,10 @@ namespace CineAntibes
     public partial class App : Application
     {
         public EventHandler OnUseCustomTheme;
+        public static CultureInfo CinemaCulture = new CultureInfo("fr-FR");
+        public static string DecimalSep =
+            DependencyService.Get<ILocalize>().GetCurrentCultureInfo()
+                             .NumberFormat.NumberDecimalSeparator;
 
         public App()
         {
@@ -16,7 +23,10 @@ namespace CineAntibes
 
             MainPage = new Main();
 
-            WebService.GetCinemaInformations();
+            Task cineInformations = new Task(
+                async () => await WebService.GetCinemaInformations()
+            );
+            cineInformations.Start();
         }
 
         protected override void OnStart()
@@ -58,6 +68,18 @@ namespace CineAntibes
         }
         #endregion
 
+        #region Menu Item Filter
+        static List<string> whatsOnList;
+        public static List<string> WhatsOnList
+        {
+            get
+            {
+                if (whatsOnList == null) whatsOnList = CinemaTable.GetCurrentCinema().WhatsOn;
+                return whatsOnList;
+            }
+        }
+        #endregion
+
         #region Database
         static CinemaTable cinemaTable;
         public static CinemaTable CinemaTable
@@ -76,6 +98,16 @@ namespace CineAntibes
             {
                 if (priceTable == null) priceTable = new PriceTable();
                 return priceTable;
+            }
+        }
+
+        static MovieTable movieTable;
+        public static MovieTable MovieTable
+        {
+            get
+            {
+                if (movieTable == null) movieTable = new MovieTable();
+                return movieTable;
             }
         }
         #endregion

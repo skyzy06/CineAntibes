@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SQLite;
 
@@ -23,8 +25,16 @@ namespace CineAntibes.Models
             Country = JSONCinema.Value<string>("pays");
             Phone = JSONCinema.Value<string>("telephone");
             Email = JSONCinema.Value<string>("email");
-            Latitude = Decimal.Parse(JSONCinema.Value<string>("latitude"));
-            Longitude = Decimal.Parse(JSONCinema.Value<string>("longitude"));
+            if (App.DecimalSep.Equals(","))
+            {
+                Latitude = Decimal.Parse(JSONCinema.Value<string>("latitude").Replace('.', ','));
+                Longitude = Decimal.Parse(JSONCinema.Value<string>("longitude").Replace('.', ','));
+            }
+            else
+            {
+                Latitude = Decimal.Parse(JSONCinema.Value<string>("latitude"));
+                Longitude = Decimal.Parse(JSONCinema.Value<string>("longitude"));
+            }
 
             ScheduleUrl = JSONCinema.Value<string>("horaires");
             WhatsOnUrl = JSONCinema.Value<string>("affiche");
@@ -187,5 +197,39 @@ namespace CineAntibes.Models
             get; set;
         }
         #endregion
+
+        [DataMember]
+        public DateTime LastSynchronisation
+        {
+            get; set;
+        }
+
+        [DataMember]
+        public string WhatsOnJson
+        {
+            get; set;
+        }
+
+        [Ignore]
+        public List<string> WhatsOn
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(WhatsOnJson))
+                {
+                    return JsonConvert.DeserializeObject<List<string>>(WhatsOnJson);
+                }
+                return null;
+            }
+            set
+            {
+                WhatsOnJson = JsonConvert.SerializeObject(value);
+            }
+        }
+
+        public override string ToString()
+        {
+            return Name + "\n" + Address1 + "\n" + ZipCode + " " + City + "\nLast update: " + LastSynchronisation;
+        }
     }
 }

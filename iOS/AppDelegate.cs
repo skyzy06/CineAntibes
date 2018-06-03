@@ -1,4 +1,5 @@
-﻿using Foundation;
+﻿using FFImageLoading.Forms.Platform;
+using Foundation;
 using UIKit;
 
 namespace CineAntibes.iOS
@@ -9,6 +10,7 @@ namespace CineAntibes.iOS
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
 			Xamarin.Forms.Forms.Init();
+            CachedImageRenderer.Init();
 
 			UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.LightContent, false);
 

@@ -63,7 +63,10 @@ namespace CineAntibes.ViewModels
                 if (selectedMenuItem != value)
                 {
                     selectedMenuItem = value;
-                    OpenMenuPage();
+                    if (selectedMenuItem != null)
+                    {
+                        OpenMenuPage();
+                    }
                     OnPropertyChanged();
                 }
             }

@@ -41,6 +41,11 @@
                 <Setter Property="Opacity" Value="0.6"/>
                 <Setter Property="Aspect" Value="AspectFit"/>
             </Style>
+
+            <Style x:Key="lstView" TargetType="ListView">
+                <Setter Property="SeparatorColor" Value="Transparent"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
             <!-- #EndRegion -->
         </ResourceDictionary>
     </Application.Resources>

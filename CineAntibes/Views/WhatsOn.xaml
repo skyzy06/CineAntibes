@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cells="clr-namespace:CineAntibes.DataTemplates"
              xmlns:extensions="clr-namespace:CineAntibes.Extensions"
+             xmlns:viewModels="clr-namespace:CineAntibes.ViewModels"
              x:Class="CineAntibes.Views.WhatsOn"
              Title="{extensions:Translate WhatsOnTitle}">
+
+    <ContentPage.BindingContext>
+        <viewModels:WhatsOnViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="listMovies" TargetType="ListView" BasedOn="{StaticResource lstView}" >
+                <Setter Property="HasUnevenRows" Value="True"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
+        <ListView ItemsSource="{Binding ListMovies}" SelectedItem="{Binding SelectedMovie, Mode=TwoWay}"
+                      Style="{StaticResource listMovies}" CachingStrategy="RecycleElement" BackgroundColor="White">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <cells:WhatsOnCell />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
     </ContentPage.Content>
 </ContentPage>

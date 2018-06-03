@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:controls="clr-namespace:CineAntibes.Controls"
+          xmlns:ffil="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+          x:Class="CineAntibes.DataTemplates.WhatsOnCell">
+    <ViewCell.View>
+        <Grid Style="{StaticResource woCellGrid}">
+            <Grid.Resources>
+                <ResourceDictionary>
+                    <!-- image height -->
+                    <x:Double x:Key="movieImageHeight">130</x:Double>
+                    <x:Double x:Key="movieImageWidth">90</x:Double>
+                    
+                    <Style x:Key="woCellGrid" TargetType="Grid">
+                        <Setter Property="Margin" Value="10" />
+                    </Style>
+                    <Style x:Key="movieImageLayout" TargetType="StackLayout">
+                        <Setter Property="WidthRequest" Value="{StaticResource movieImageWidth}" />
+                        <Setter Property="HeightRequest" Value="{StaticResource movieImageHeight}" />
+                        <Setter Property="MinimumWidthRequest" Value="{StaticResource movieImageWidth}" />
+                        <Setter Property="MinimumHeightRequest" Value="{StaticResource movieImageHeight}" />
+                    </Style>
+                    <Style x:Key="movieImage" TargetType="ffil:CachedImage">
+                        <Setter Property="Aspect" Value="AspectFill" />
+                        <Setter Property="WidthRequest" Value="{StaticResource movieImageWidth}" />
+                        <Setter Property="HeightRequest" Value="{StaticResource movieImageHeight}" />
+                        <Setter Property="MinimumWidthRequest" Value="{StaticResource movieImageWidth}" />
+                        <Setter Property="MinimumHeightRequest" Value="{StaticResource movieImageHeight}" />
+                        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                        <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                        <Setter Property="DownsampleToViewSize" Value="True" />
+                    </Style>
+                    <Style x:Key="movieInformationsLayout" TargetType="StackLayout">
+                        <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                        <Setter Property="Spacing" Value="0" />
+                    </Style>
+                    <Style x:Key="movieTitle" TargetType="controls:ExtendedLabel" BasedOn="{StaticResource h2}">
+                        <Setter Property="LineBreakMode" Value="TailTruncation" />
+                        <Setter Property="MaxLines" Value="2" />
+                    </Style>
+                    <Style x:Key="movieSynopsis" TargetType="controls:ExtendedLabel" BasedOn="{StaticResource normalText}">
+                        <Setter Property="LineBreakMode" Value="TailTruncation" />
+                        <Setter Property="MaxLines" Value="4" />
+                    </Style>
+                </ResourceDictionary>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackLayout Style="{StaticResource movieImageLayout}" Grid.Column="0">
+                <ffil:CachedImage Source="{Binding Thumbnail}" LoadingPlaceholder="sans_affiche" Style="{StaticResource movieImage}" />
+            </StackLayout>
+            <StackLayout Style="{StaticResource movieInformationsLayout}" Grid.Column="1">
+                <!--Title-->
+                <controls:ExtendedLabel Text="{Binding Title}" Style="{StaticResource movieTitle}" />
+                <!--Synopsis-->
+                <controls:ExtendedLabel Text="{Binding Synopsis}" Style="{StaticResource movieSynopsis}" />
+            </StackLayout>
+        </Grid>
+    </ViewCell.View>
+</ViewCell>
