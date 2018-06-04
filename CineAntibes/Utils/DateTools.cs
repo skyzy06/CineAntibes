@@ -40,11 +40,27 @@ namespace CineAntibes.Utils
         {
             try
             {
-                List<DateTime> output = new List<DateTime>();
                 string thisWeekSessions = jsonSession.Value<string>("Cette semaine");
                 string nextWeekSessions = jsonSession.Value<string>("Dès la semaine prochaine");
 
-                string[] splitedDaySessions = Regex.Split(thisWeekSessions.Trim(), "\n\n");
+                List<DateTime> output = ExtractFromString(thisWeekSessions);
+                output.AddRange(ExtractFromString(nextWeekSessions));
+
+                return output;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        static List<DateTime> ExtractFromString(string stringList)
+        {
+            try
+            {
+                List<DateTime> output = new List<DateTime>();
+
+                string[] splitedDaySessions = Regex.Split(stringList.Trim(), "\n\n");
 
                 for (int i = 0; i < splitedDaySessions.Length; i++)
                 {
@@ -63,12 +79,11 @@ namespace CineAntibes.Utils
                         output.Add(formatedDate);
                     }
                 }
-
                 return output;
             }
             catch (Exception)
             {
-                return null;
+                return new List<DateTime>();
             }
         }
     }

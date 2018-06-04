@@ -70,5 +70,35 @@ namespace CineAntibes.Resources {
                 return ResourceManager.GetString("WithinAnHourTitle", resourceCulture);
             }
         }
+        
+        public static string MovieBy {
+            get {
+                return ResourceManager.GetString("MovieBy", resourceCulture);
+            }
+        }
+        
+        public static string MovieRating {
+            get {
+                return ResourceManager.GetString("MovieRating", resourceCulture);
+            }
+        }
+        
+        public static string MovieNextSession {
+            get {
+                return ResourceManager.GetString("MovieNextSession", resourceCulture);
+            }
+        }
+        
+        public static string NoNextSession {
+            get {
+                return ResourceManager.GetString("NoNextSession", resourceCulture);
+            }
+        }
+        
+        public static string SessionDateFormat {
+            get {
+                return ResourceManager.GetString("SessionDateFormat", resourceCulture);
+            }
+        }
     }
 }

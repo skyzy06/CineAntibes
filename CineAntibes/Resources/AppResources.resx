@@ -12,29 +12,39 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-
     <data name="MenuTitle" xml:space="preserve">
         <value>CineAntibes</value>
         <comment>Title of the Menu</comment>
     </data>
-
     <data name="ScheduleTitle" xml:space="preserve">
         <value>Schedule</value>
         <comment>Title of the Schedule page</comment>
     </data>
-
     <data name="WhatsOnTitle" xml:space="preserve">
         <value>What's On</value>
         <comment>Title of the WhatsOn page</comment>
     </data>
-
     <data name="ComingSoonTitle" xml:space="preserve">
         <value>Coming soon</value>
         <comment>Title of the ComingSoon page</comment>
     </data>
-
     <data name="WithinAnHourTitle" xml:space="preserve">
         <value>Within an hour</value>
         <comment>Title of the WithinAnHour page</comment>
+    </data>
+    <data name="MovieBy" xml:space="preserve">
+        <value>Director: {0}</value>
+    </data>
+    <data name="MovieRating" xml:space="preserve">
+        <value>Rating: {0}/5</value>
+    </data>
+    <data name="MovieNextSession" xml:space="preserve">
+        <value>Next {0} session: {1}</value>
+    </data>
+    <data name="NoNextSession" xml:space="preserve">
+        <value>none</value>
+    </data>
+    <data name="SessionDateFormat" xml:space="preserve">
+        <value>ddd, MMMM dd a\t hh:mm tt</value>
     </data>
 </root>

@@ -116,7 +116,6 @@ namespace CineAntibes.Utils
                 {
                     whatsOnList.Add(whatsonEnumerator.Current.ToString());
                 }
-                Debug.WriteLine(App.MovieTable.GetMovieByID(187334).Synopsis);
 
                 currentCinema.WhatsOn = whatsOnList;
                 currentCinema.LastSynchronisation = DateTime.Now;

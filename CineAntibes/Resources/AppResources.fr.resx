@@ -12,20 +12,31 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-
     <data name="ScheduleTitle" xml:space="preserve">
         <value>Horaires</value>
     </data>
-
     <data name="WhatsOnTitle" xml:space="preserve">
         <value>À l'affiche</value>
     </data>
-    
     <data name="ComingSoonTitle" xml:space="preserve">
         <value>Prochainement</value>
     </data>
-    
     <data name="WithinAnHourTitle" xml:space="preserve">
         <value>Dans l'heure</value>
+    </data>
+    <data name="MovieBy" xml:space="preserve">
+        <value>Réalisateur : {0}</value>
+    </data>
+    <data name="MovieRating" xml:space="preserve">
+        <value>Note : {0}/5</value>
+    </data>
+    <data name="MovieNextSession" xml:space="preserve">
+        <value>Prochaine session {0} : {1}</value>
+    </data>
+    <data name="NoNextSession" xml:space="preserve">
+        <value>aucune</value>
+    </data>
+    <data name="SessionDateFormat" xml:space="preserve">
+        <value>ddd dd MMMM à HH:mm</value>
     </data>
 </root>
