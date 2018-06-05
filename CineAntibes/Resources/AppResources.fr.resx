@@ -39,4 +39,7 @@
     <data name="SessionDateFormat" xml:space="preserve">
         <value>ddd dd MMMM à HH:mm</value>
     </data>
+    <data name="LoadingMessage" xml:space="preserve">
+        <value>Quels sont les films du moment ?</value>
+    </data>
 </root>

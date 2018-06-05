@@ -20,6 +20,8 @@ namespace CineAntibes.Utils
         static string GoogleWSUrl = "https://script.google.com/macros/s/AKfycbysXi-D8XWA4-q3dgknLzb_7F70zAn8EyFLq5TbQwbeop5WpD0/exec?";
         static string Platform = Device.RuntimePlatform == Device.Android ? "android" : "iphone";
 
+        Loading LoadingPage;
+
         Cinema currentCinema;
 
         public async Task GetCinemaInformations()
@@ -36,6 +38,13 @@ namespace CineAntibes.Utils
 
                 if (timeSinceLastSynchro.Hours > 1)
                 {
+                    LoadingPage = new Loading();
+
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        Application.Current.MainPage.Navigation.PushModalAsync(LoadingPage);
+                    });
+
                     IEnumerable<KeyValuePair<string, string>> requestParams = new[]
                     {
                         new KeyValuePair<string, string>("p", "cinemas"),
@@ -44,6 +53,11 @@ namespace CineAntibes.Utils
 
                     string response = await SendRequest(ServerUrl, requestParams);
                     JToken jsonResponse = JsonConvert.DeserializeObject<JArray>(response)[0];
+
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        LoadingPage.GetProgressBar().ProgressTo(0.3, 100, Easing.Linear);
+                    });
 
                     App.CinemaTable.Save(new Cinema(jsonResponse));
 
@@ -92,6 +106,11 @@ namespace CineAntibes.Utils
                 IJEnumerable<JToken> listJsonMovies = jsonResponse.Values();
                 IEnumerator<JToken> movieEnumerator = listJsonMovies.GetEnumerator();
 
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    LoadingPage.GetProgressBar().ProgressTo(0.6, 100, Easing.Linear);
+                });
+
                 while (movieEnumerator.MoveNext())
                 {
                     Movie movie = new Movie(movieEnumerator.Current);
@@ -112,6 +131,12 @@ namespace CineAntibes.Utils
                 JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(response);
                 IEnumerator<JToken> whatsonEnumerator = jsonResponse.GetEnumerator();
                 List<string> whatsOnList = new List<string>();
+
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    LoadingPage.GetProgressBar().ProgressTo(1, 100, Easing.Linear);
+                });
+
                 while (whatsonEnumerator.MoveNext())
                 {
                     whatsOnList.Add(whatsonEnumerator.Current.ToString());
@@ -124,6 +149,14 @@ namespace CineAntibes.Utils
 
                 (((Application.Current.MainPage as MasterDetailPage).Detail as NavigationPage).CurrentPage as WhatsOn)
                     .GetContext().ListMovies = new ObservableCollection<Movie>(App.MovieTable.GetWhatsOnMovie());
+
+                if (Application.Current.MainPage.Navigation.ModalStack.Count() > 0)
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        Application.Current.MainPage.Navigation.PopModalAsync();
+                    });
+                }
             }
             catch (Exception ex)
             {

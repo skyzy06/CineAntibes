@@ -100,5 +100,11 @@ namespace CineAntibes.Resources {
                 return ResourceManager.GetString("SessionDateFormat", resourceCulture);
             }
         }
+        
+        public static string LoadingMessage {
+            get {
+                return ResourceManager.GetString("LoadingMessage", resourceCulture);
+            }
+        }
     }
 }

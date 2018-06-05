@@ -5,42 +5,52 @@
              xmlns:extensions="clr-namespace:CineAntibes.Extensions"
              xmlns:viewModels="clr-namespace:CineAntibes.ViewModels"
              x:Class="CineAntibes.Views.Menu"
-             Title="{extensions:Translate MenuTitle}"
-             Padding="0, 40, 0, 0">
+             Style="{StaticResource menuContentPage}"
+             Title="{extensions:Translate MenuTitle}">
     
     <ContentPage.BindingContext>
         <viewModels:MenuViewModel />
     </ContentPage.BindingContext>
-
+    
     <ContentPage.Resources>
         <ResourceDictionary>
             <!-- image height -->
-            <x:Double x:Key="imageMenuHeight">170</x:Double>
-
+            <x:Double x:Key="imageMenuHeight">180</x:Double>
             <!-- menu entry height -->
             <x:Int32 x:Key="rowMenuheight">60</x:Int32>
+            
+            <Style x:Key="menuContentPage" TargetType="ContentPage" BasedOn="{StaticResource contentPageBase}">
+                <Setter Property="Padding">
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="Android" Value="0,40,0,0" />
+                        <On Platform="iOS" Value="0" />
+                    </OnPlatform>
+                </Setter>
+            </Style>
 
+            <Style x:Key="mainLayout" TargetType="StackLayout">
+                <Setter Property="BackgroundColor" Value="White"/>
+            </Style>
+            
             <Style x:Key="imageHeaderMenu" TargetType="Image">
-                <Setter Property="Aspect" Value="AspectFit"/>
-                <Setter Property="Margin" Value="0,0,0,10"/>
-                <Setter Property="WidthRequest" Value="{StaticResource imageMenuHeight}"/>
+                <Setter Property="Aspect" Value="AspectFit" />
+                <Setter Property="Margin" Value="0,10" />
+                <Setter Property="WidthRequest" Value="{StaticResource imageMenuHeight}" />
             </Style>
             <Style x:Key="menuItemListView" TargetType="ListView">
-                <Setter Property="SeparatorColor" Value="Gray"/>
-                <Setter Property="RowHeight" Value="{StaticResource rowMenuheight}"/>
+                <Setter Property="SeparatorColor" Value="Gray" />
+                <Setter Property="RowHeight" Value="{StaticResource rowMenuheight}" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     
     <ContentPage.Content>
-        <StackLayout>
-            <Image Source="logo.png" Style="{StaticResource imageHeaderMenu}"/>
-            <ListView
-                ItemsSource="{Binding MenuItemList}"
-                SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}"
-                Style="{StaticResource menuItemListView}">
+        <StackLayout Style="{StaticResource mainLayout}">
+            <Image Source="logo.png" Style="{StaticResource imageHeaderMenu}" />
+            <ListView ItemsSource="{Binding MenuItemList}" SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}"
+                      Style="{StaticResource menuItemListView}">
                 <ListView.Footer>
-                    <StackLayout/>
+                    <StackLayout />
                 </ListView.Footer>
                 <ListView.ItemTemplate>
                     <DataTemplate>

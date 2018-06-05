@@ -70,6 +70,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Loading.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -126,6 +130,10 @@
     <Compile Include="Controls\ExtendedLabel.cs" />
     <Compile Include="Utils\StringTools.cs" />
     <Compile Include="Converters\NextMovieSessionConverter.cs" />
+    <Compile Include="Views\Loading.xaml.cs">
+      <DependentUpon>Loading.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\LoadingViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />

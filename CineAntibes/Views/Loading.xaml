@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:CineAntibes.ViewModels"
+             x:Class="CineAntibes.Views.Loading"
+             Style="{StaticResource loadingContentPage}">
+    
+    <ContentPage.BindingContext>
+        <viewModels:LoadingViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="loadingContentPage" TargetType="ContentPage" BasedOn="{StaticResource contentPageBase}">
+                <Setter Property="Padding">
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="Android" Value="0,40,0,0" />
+                        <On Platform="iOS" Value="0" />
+                    </OnPlatform>
+                </Setter>
+            </Style>
+            <Style x:Key="mainLayout" TargetType="RelativeLayout">
+                <Setter Property="BackgroundColor" Value="White" />
+            </Style>
+            <Style x:Key="appVersion" TargetType="Label" BasedOn="{StaticResource normalText}">
+                <Setter Property="TextColor" Value="{DynamicResource loadingTextColor}" />
+                <Setter Property="HorizontalTextAlignment" Value="End" />
+                <Setter Property="Margin" Value="0,5,5,0" />
+            </Style>
+            <Style x:Key="loadingDetailLayout" TargetType="StackLayout">
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Padding" Value="20" />
+            </Style>
+            <Style x:Key="loadingLogo" TargetType="Image">
+                <Setter Property="HeightRequest" Value="120" />
+                <Setter Property="Margin" Value="0,0,0,50" />
+            </Style>
+            <Style x:Key="loadingMessage" TargetType="Label" BasedOn="{StaticResource h1}">
+                <Setter Property="TextColor" Value="{DynamicResource loadingTextColor}" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="Margin" Value="0,0,0,20" />
+            </Style>
+            <Style x:Key="loadingProgress" TargetType="ProgressBar">
+                <Setter Property="ProgressColor" Value="{DynamicResource appMainColor}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <RelativeLayout Style="{StaticResource mainLayout}">
+            <!-- current app version top right -->
+            <Label Text="0.0.1" Style="{StaticResource appVersion}"
+                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}" />
+            <StackLayout Style="{StaticResource loadingDetailLayout}"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                         RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+                <Image Source="logo.png" Style="{StaticResource loadingLogo}" HeightRequest="120" Margin="0,0,0,50" />
+                <Label Text="{Binding LoadingMessage}" Style="{StaticResource loadingMessage}" />
+                <ProgressBar x:Name="progressBar" Progress="0.0" Style="{StaticResource loadingProgress}" />
+            </StackLayout>
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>

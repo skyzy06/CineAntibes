@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CineAntibes.App">
     <Application.Resources>
         <!-- Application resource dictionary -->
@@ -11,40 +11,47 @@
             <Color x:Key="appAccentColor">#FFC107</Color>
 
             <Color x:Key="appNavBarItemColor">#FFFFFF</Color>
+            <Color x:Key="loadingTextColor">#212121</Color>
             <!-- #EndRegion -->
 
             <!-- #Region : Style for navigation page -->
             <Style TargetType="NavigationPage">
-                <Setter Property="BarBackgroundColor" Value="{DynamicResource appMainDarkColor}"/>
-                <Setter Property="BarTextColor" Value="{DynamicResource appNavBarItemColor}"/>
+                <Setter Property="BarBackgroundColor" Value="{DynamicResource appMainDarkColor}" />
+                <Setter Property="BarTextColor" Value="{DynamicResource appNavBarItemColor}" />
             </Style>
             <!-- #EndRegion -->
 
             <!-- #Region : Base style -->
             <Style x:Key="title" TargetType="Label">
-                <Setter Property="FontSize" Value="24"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize" Value="24" />
+                <Setter Property="FontAttributes" Value="Bold" />
             </Style>
             <Style x:Key="h1" TargetType="Label">
-                <Setter Property="FontSize" Value="18"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="FontAttributes" Value="Bold" />
             </Style>
             <Style x:Key="h2" TargetType="Label">
-                <Setter Property="FontSize" Value="14"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontAttributes" Value="Bold" />
             </Style>
             <Style x:Key="normalText" TargetType="Label">
-                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="FontSize" Value="12" />
             </Style>
-
             <Style x:Key="iconBase" TargetType="Image">
-                <Setter Property="Opacity" Value="0.6"/>
-                <Setter Property="Aspect" Value="AspectFit"/>
+                <Setter Property="Opacity" Value="0.6" />
+                <Setter Property="Aspect" Value="AspectFit" />
             </Style>
-
+            <Style x:Key="contentPageBase" TargetType="ContentPage">
+                <Setter Property="BackgroundColor">
+                    <OnPlatform x:TypeArguments="Color">
+                        <On Platform="iOS" Value="{StaticResource appMainDarkColor}" />
+                        <On Platform="Android" Value="White" />
+                    </OnPlatform>
+                </Setter>
+            </Style>
             <Style x:Key="lstView" TargetType="ListView">
-                <Setter Property="SeparatorColor" Value="Transparent"/>
-                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="SeparatorColor" Value="Transparent" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
             </Style>
             <!-- #EndRegion -->
         </ResourceDictionary>

@@ -1,5 +1,6 @@
 ﻿using CineAntibes.ViewModels;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace CineAntibes.Views
@@ -18,6 +19,7 @@ namespace CineAntibes.Views
             }
 
             InitializeComponent();
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
         }
 
         public MenuViewModel GetContext(){
