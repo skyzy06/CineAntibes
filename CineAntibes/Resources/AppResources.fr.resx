@@ -12,6 +12,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
+    <!-- #Region Page Title -->
     <data name="ScheduleTitle" xml:space="preserve">
         <value>Horaires</value>
     </data>
@@ -24,6 +25,11 @@
     <data name="WithinAnHourTitle" xml:space="preserve">
         <value>Dans l'heure</value>
     </data>
+    <data name="ReservationTitle" xml:space="preserve">
+        <value>Réservation</value>
+    </data>
+    <!-- #EndRegion -->
+    <!-- #Region Movie cell -->
     <data name="MovieBy" xml:space="preserve">
         <value>Réalisateur : {0}</value>
     </data>
@@ -36,6 +42,7 @@
     <data name="NoNextSession" xml:space="preserve">
         <value>aucune</value>
     </data>
+    <!-- #EndRegion -->
     <data name="SessionDateFormat" xml:space="preserve">
         <value>ddd dd MMMM à HH:mm</value>
     </data>

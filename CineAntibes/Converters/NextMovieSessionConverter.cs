@@ -26,7 +26,7 @@ namespace CineAntibes.Converters
                         nextSession = result.First();
                     }
                 }
-                else if (currentMovie.VOSessions != null)
+                else if (formatedParameter == "VO" && currentMovie.VOSessions != null)
                 {
                     IOrderedEnumerable<DateTime> result = currentMovie.VOSessions.Where(d => d > DateTime.Now).OrderBy(d => d);
                     if (result.Count() > 0)

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:CineAntibes.Controls"
+             xmlns:viewModels="clr-namespace:CineAntibes.ViewModels"
+             xmlns:ffil="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="CineAntibes.Views.MovieDetail"
+             Title="{Binding CurrentMovie.Title}">
+    <ContentPage.BindingContext>
+        <viewModels:MovieDetailViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <ffil:CachedImage Source="{Binding CurrentMovie.ImagePreview}" LoadingPlaceholder="sans_affiche"  WidthRequest="144" HeightRequest="210"/>
+            <Button Text="Réserver" Command="{Binding Reserve}" />
+            <controls:HorizontalListView ItemsSource="{Binding ListLogos}">
+                <controls:HorizontalListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="5">
+                                <ffil:CachedImage Source="{Binding .}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </controls:HorizontalListView.ItemTemplate>
+            </controls:HorizontalListView>
+            <controls:HorizontalListView Orientation="Horizontal" ItemsSource="{Binding ListPhotos}">
+                <controls:HorizontalListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="1">
+                                <ffil:CachedImage Source="{Binding .}" WidthRequest="160" HeightRequest="90" Aspect="AspectFill" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </controls:HorizontalListView.ItemTemplate>
+            </controls:HorizontalListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

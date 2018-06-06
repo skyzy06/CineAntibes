@@ -13,10 +13,12 @@
              * \u0092 -> '
              * \u0096 -> -
              * \u0085 -> ...
+             * \u009c -> œ
              */
             return input.Replace('\u0092', '\u0027')
                         .Replace('\u0096', '\u2013')
                         .Replace('\u0085', '\u2026')
+                        .Replace('\u009c', '\u0153')
                         .Replace('\u00a0', ' ')
                         .Replace('\n', ' ');
         }

@@ -21,6 +21,8 @@ namespace CineAntibes.Models
             Director = JSONMovie.Value<string>("realisateur");
             Stars = JSONMovie.Value<string>("acteurs");
             Kinds = JSONMovie.Value<string>("type");
+
+            // deal with french decimal separator
             if (App.DecimalSep.Equals(","))
             {
                 Rating = Decimal.Parse(JSONMovie.Value<string>("note").Replace('.', ','));
@@ -35,6 +37,21 @@ namespace CineAntibes.Models
             VOSessions = DateTools.FormatSessions(JSONMovie.Value<JToken>("seances_vo"));
             Thumbnail = JSONMovie.Value<string>("image");
             ImagePreview = JSONMovie.Value<string>("imagelarge");
+
+            // 'Add' doesn't call the 'set' method on Logos
+            List<string> logoList = new List<string>();
+            foreach (JToken token in JSONMovie.Value<JArray>("logos"))
+            {
+                logoList.Add(token.ToString());
+            }
+            Logos = logoList;
+
+            List<string> photosList = new List<string>();
+            foreach (JToken token in JSONMovie.Value<JArray>("photos"))
+            {
+                photosList.Add(token.ToString());
+            }
+            Photos = photosList;
         }
 
         [PrimaryKey]
@@ -138,6 +155,42 @@ namespace CineAntibes.Models
 
         [DataMember]
         public string ImagePreview
+        {
+            get; set;
+        }
+
+        [Ignore]
+        public List<string> Logos
+        {
+            get
+            {
+                return JsonConvert.DeserializeObject<List<string>>(LogosJson);
+            }
+            set
+            {
+                LogosJson = JsonConvert.SerializeObject(value);
+            }
+        }
+
+        public string LogosJson
+        {
+            get; set;
+        }
+
+        [Ignore]
+        public List<string> Photos
+        {
+            get
+            {
+                return JsonConvert.DeserializeObject<List<string>>(PhotosJson);
+            }
+            set
+            {
+                PhotosJson = JsonConvert.SerializeObject(value);
+            }
+        }
+
+        public string PhotosJson
         {
             get; set;
         }

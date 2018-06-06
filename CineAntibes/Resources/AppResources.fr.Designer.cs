@@ -71,6 +71,12 @@ namespace CineAntibes.Resources {
             }
         }
         
+        public static string ReservationTitle {
+            get {
+                return ResourceManager.GetString("ReservationTitle", resourceCulture);
+            }
+        }
+        
         public static string MovieBy {
             get {
                 return ResourceManager.GetString("MovieBy", resourceCulture);

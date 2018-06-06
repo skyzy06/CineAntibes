@@ -1,5 +1,8 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using CineAntibes.Models;
+using CineAntibes.Views;
 
 namespace CineAntibes.ViewModels
 {
@@ -22,6 +25,10 @@ namespace CineAntibes.ViewModels
                 if (selectedMovie != value)
                 {
                     selectedMovie = value;
+                    if (value != null)
+                    {
+                        OpenMovieDetailAsync();
+                    }
                     OnPropertyChanged();
                 }
             }
@@ -41,6 +48,16 @@ namespace CineAntibes.ViewModels
 
         #region Methods
 
+
+        async void OpenMovieDetailAsync()
+        {
+            MovieDetail moviePage = new MovieDetail();
+            moviePage.GetContext().CurrentMovie = SelectedMovie;
+
+            await GetCurrentNavigation().PushAsync(moviePage);
+
+            SelectedMovie = null;
+        }
         #endregion
     }
 }

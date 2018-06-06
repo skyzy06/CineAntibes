@@ -74,6 +74,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\MovieDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Reservation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -134,6 +142,15 @@
       <DependentUpon>Loading.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\LoadingViewModel.cs" />
+    <Compile Include="Views\MovieDetail.xaml.cs">
+      <DependentUpon>MovieDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\MovieDetailViewModel.cs" />
+    <Compile Include="Views\Reservation.xaml.cs">
+      <DependentUpon>Reservation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\ReservationViewModel.cs" />
+    <Compile Include="Controls\HorizontalListView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
