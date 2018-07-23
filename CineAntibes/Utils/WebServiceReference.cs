@@ -36,7 +36,7 @@ namespace CineAntibes.Utils
                     timeSinceLastSynchro = DateTime.Now.Subtract(currentCinema.LastSynchronisation);
                 }
 
-                if (timeSinceLastSynchro.Hours > 1)
+                if (timeSinceLastSynchro.TotalHours > 3)
                 {
                     LoadingPage = new Loading();
 

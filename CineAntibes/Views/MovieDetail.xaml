@@ -2,39 +2,110 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:CineAntibes.Controls"
+             xmlns:extensions="clr-namespace:CineAntibes.Extensions"
              xmlns:viewModels="clr-namespace:CineAntibes.ViewModels"
              xmlns:ffil="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="CineAntibes.Views.MovieDetail"
-             Title="{Binding CurrentMovie.Title}">
+             Title="{Binding CurrentMovie.Title}"
+             Style="{StaticResource pageMovieDetail}">
     <ContentPage.BindingContext>
         <viewModels:MovieDetailViewModel />
     </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="pageMovieDetail" TargetType="ContentPage">
+                <Setter Property="Padding" Value="10" />
+            </Style>
+            <Style x:Key="detailHeader" TargetType="Grid">
+                <Setter Property="RowSpacing" Value="0" />
+            </Style>
+            <Style x:Key="directorAndStars" TargetType="Grid">
+                <Setter Property="ColumnSpacing" Value="0" />
+            </Style>
+            <Style x:Key="sectionTitle" TargetType="Label" BasedOn="{StaticResource h1}">
+                <Setter Property="Margin" Value="0,5,0,0" />
+                <Setter Property="TextColor" Value="{DynamicResource appMainDarkColor}" />
+            </Style>
+            <Style x:Key="rowDetailLayout" TargetType="StackLayout">
+                <Setter Property="Spacing" Value="0" />
+                <Setter Property="Orientation" Value="Horizontal" />
+            </Style>
+            <Style x:Key="valueHighlighted" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="valueHighlightedColored" TargetType="Label" BasedOn="{StaticResource valueHighlighted}">
+                <Setter Property="TextColor" Value="{DynamicResource appMainDarkColor}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <ffil:CachedImage Source="{Binding CurrentMovie.ImagePreview}" LoadingPlaceholder="sans_affiche"  WidthRequest="144" HeightRequest="210"/>
-            <Button Text="Réserver" Command="{Binding Reserve}" />
-            <controls:HorizontalListView ItemsSource="{Binding ListLogos}">
-                <controls:HorizontalListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Padding="5">
-                                <ffil:CachedImage Source="{Binding .}" />
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </controls:HorizontalListView.ItemTemplate>
-            </controls:HorizontalListView>
-            <controls:HorizontalListView Orientation="Horizontal" ItemsSource="{Binding ListPhotos}">
-                <controls:HorizontalListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Padding="1">
-                                <ffil:CachedImage Source="{Binding .}" WidthRequest="160" HeightRequest="90" Aspect="AspectFill" />
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </controls:HorizontalListView.ItemTemplate>
-            </controls:HorizontalListView>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout VerticalOptions="FillAndExpand">
+                <!-- #Region Header: image, duration, ... -->
+                <Grid Style="{StaticResource detailHeader}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <ffil:CachedImage Source="{Binding CurrentMovie.ImagePreview}" Grid.Column="0" Grid.RowSpan="5" LoadingPlaceholder="sans_affiche" WidthRequest="120" HeightRequest="175" VerticalOptions="StartAndExpand" />
+                    <Label Text="{Binding CurrentMovie.Duration}" Style="{StaticResource valueHighlighted}" VerticalTextAlignment="Center" Grid.Column="1" Grid.Row="0" />
+                    <Label Text="{Binding CurrentMovie.Kinds}" VerticalTextAlignment="Center" Grid.Column="1" Grid.Row="1" />
+                    <StackLayout Grid.Column="1" Grid.Row="2" Style="{StaticResource rowDetailLayout}">
+                        <Label Text="{extensions:Translate MovieReleaseDate}" VerticalTextAlignment="Center" />
+                        <Label Text="{Binding CurrentMovie.ReleaseDate, StringFormat={extensions:Translate ReleaseDateFormat}}" Style="{StaticResource valueHighlightedColored}" VerticalTextAlignment="Center" />
+                    </StackLayout>
+                    <Button Margin="0" Text="{extensions:Translate MovieBookButton}" Command="{Binding Reserve}" Grid.Column="1" Grid.Row="3" Grid.RowSpan="2" VerticalOptions="End" />
+                </Grid>
+                <!-- #EndRegion -->
+                <!-- #Region Logos: preview, age restriction, ... -->
+                <controls:HorizontalListView ItemsSource="{Binding ListLogos}">
+                    <controls:HorizontalListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="5">
+                                    <ffil:CachedImage Source="{Binding .}" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </controls:HorizontalListView.ItemTemplate>
+                </controls:HorizontalListView>
+                <!-- #EndRegion -->
+                <!-- #Region Movie's details: director, stars,... -->
+                <Label Text="{extensions:Translate MovieDirectoreAndStars}" Style="{StaticResource sectionTitle}" />
+                <Grid Style="{StaticResource directorAndStars}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Label Text="{extensions:Translate MovieRealizedBy}" Grid.Column="0" Grid.Row="0" />
+                    <Label Text="{Binding CurrentMovie.Director}" Style="{StaticResource valueHighlightedColored}" Grid.Column="1" Grid.Row="0" />
+                    <Label Text="{extensions:Translate MovieWith}" Grid.Column="0" Grid.Row="1" HorizontalTextAlignment="End" />
+                    <Label Text="{Binding CurrentMovie.Stars}" Style="{StaticResource valueHighlightedColored}" Grid.Column="1" Grid.Row="1" />
+                </Grid>
+                <Label Text="{extensions:Translate MovieSynopsis}" Style="{StaticResource sectionTitle}" />
+                <Label Text="{Binding CurrentMovie.Synopsis}" />
+                <!-- #EndRegion -->
+                <!-- #Region Previews -->
+                <Label Text="{extensions:Translate MoviePhotos}" Style="{StaticResource sectionTitle}" />
+                <controls:HorizontalListView Orientation="Horizontal" ItemsSource="{Binding ListPhotos}">
+                    <controls:HorizontalListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="1">
+                                    <ffil:CachedImage Source="{Binding .}" WidthRequest="160" HeightRequest="90" Aspect="AspectFill" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </controls:HorizontalListView.ItemTemplate>
+                </controls:HorizontalListView>
+                <!-- #EndRegion -->
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

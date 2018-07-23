@@ -101,9 +101,45 @@ namespace CineAntibes.Resources {
             }
         }
         
+        public static string MovieBookButton {
+            get {
+                return ResourceManager.GetString("MovieBookButton", resourceCulture);
+            }
+        }
+        
+        public static string MovieDirectoreAndStars {
+            get {
+                return ResourceManager.GetString("MovieDirectoreAndStars", resourceCulture);
+            }
+        }
+        
+        public static string MovieRealizedBy {
+            get {
+                return ResourceManager.GetString("MovieRealizedBy", resourceCulture);
+            }
+        }
+        
+        public static string MovieWith {
+            get {
+                return ResourceManager.GetString("MovieWith", resourceCulture);
+            }
+        }
+        
+        public static string MovieReleaseDate {
+            get {
+                return ResourceManager.GetString("MovieReleaseDate", resourceCulture);
+            }
+        }
+        
         public static string SessionDateFormat {
             get {
                 return ResourceManager.GetString("SessionDateFormat", resourceCulture);
+            }
+        }
+        
+        public static string ReleaseDateFormat {
+            get {
+                return ResourceManager.GetString("ReleaseDateFormat", resourceCulture);
             }
         }
         

@@ -42,9 +42,29 @@
     <data name="NoNextSession" xml:space="preserve">
         <value>aucune</value>
     </data>
+    <!-- #Region Movie Detail -->
+    <data name="MovieBookButton" xml:space="preserve">
+        <value>Réserver</value>
+    </data>
+    <data name="MovieDirectoreAndStars" xml:space="preserve">
+        <value>Réalisateur, acteurs</value>
+    </data>
+    <data name="MovieRealizedBy" xml:space="preserve">
+        <value>Réalisé par </value>
+    </data>
+    <data name="MovieWith" xml:space="preserve">
+        <value>avec </value>
+    </data>
+    <data name="MovieReleaseDate" xml:space="preserve">
+        <value>Sortie : </value>
+    </data>
+    <!-- #EndRegion -->
     <!-- #EndRegion -->
     <data name="SessionDateFormat" xml:space="preserve">
         <value>ddd dd MMMM à HH:mm</value>
+    </data>
+    <data name="ReleaseDateFormat" xml:space="preserve">
+        <value>{0:dd MMMM yyyy}</value>
     </data>
     <data name="LoadingMessage" xml:space="preserve">
         <value>Quels sont les films du moment ?</value>
