@@ -53,8 +53,17 @@
     </data>
     <!-- #EndRegion -->
     <!-- #Region Movie Detail -->
+    <data name="MovieReleaseDate" xml:space="preserve">
+        <value>Release date: </value>
+    </data>
     <data name="MovieBookButton" xml:space="preserve">
         <value>Book</value>
+    </data>
+    <data name="VFSessionsSection" xml:space="preserve">
+        <value>Sessions in french version</value>
+    </data>
+    <data name="VOSessionsSection" xml:space="preserve">
+        <value>Sessions in original version with subtitles</value>
     </data>
     <data name="MovieDirectoreAndStars" xml:space="preserve">
         <value>Director, stars</value>
@@ -71,15 +80,15 @@
     <data name="MovieWith" xml:space="preserve">
         <value>with </value>
     </data>
-    <data name="MovieReleaseDate" xml:space="preserve">
-        <value>Release date: </value>
-    </data>
     <!-- #EndRegion -->
     <data name="SessionDateFormat" xml:space="preserve">
         <value>ddd, MMMM dd a\t hh:mm tt</value>
     </data>
     <data name="ReleaseDateFormat" xml:space="preserve">
         <value>{0:MMMM dd, yyyy}</value>
+    </data>
+    <data name="HourDateFormat" xml:space="preserve">
+        <value>{0:hh\:mm tt}</value>
     </data>
     <data name="LoadingMessage" xml:space="preserve">
         <value>What films are coming out this week?</value>

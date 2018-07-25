@@ -43,8 +43,17 @@
         <value>aucune</value>
     </data>
     <!-- #Region Movie Detail -->
+    <data name="MovieReleaseDate" xml:space="preserve">
+        <value>Sortie : </value>
+    </data>
     <data name="MovieBookButton" xml:space="preserve">
         <value>Réserver</value>
+    </data>
+    <data name="VFSessionsSection" xml:space="preserve">
+        <value>Séances en version française</value>
+    </data>
+    <data name="VOSessionsSection" xml:space="preserve">
+        <value>Séances en version originale sous-titrée</value>
     </data>
     <data name="MovieDirectoreAndStars" xml:space="preserve">
         <value>Réalisateur, acteurs</value>
@@ -55,16 +64,16 @@
     <data name="MovieWith" xml:space="preserve">
         <value>avec </value>
     </data>
-    <data name="MovieReleaseDate" xml:space="preserve">
-        <value>Sortie : </value>
-    </data>
     <!-- #EndRegion -->
     <!-- #EndRegion -->
     <data name="SessionDateFormat" xml:space="preserve">
-        <value>ddd dd MMMM à HH:mm</value>
+        <value>ddd dd MMMM à HH\hmm</value>
     </data>
     <data name="ReleaseDateFormat" xml:space="preserve">
         <value>{0:dd MMMM yyyy}</value>
+    </data>
+    <data name="HourDateFormat" xml:space="preserve">
+        <value>{0:HH\hmm}</value>
     </data>
     <data name="LoadingMessage" xml:space="preserve">
         <value>Quels sont les films du moment ?</value>

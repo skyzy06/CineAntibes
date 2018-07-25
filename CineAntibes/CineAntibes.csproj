@@ -150,6 +150,8 @@
     </Compile>
     <Compile Include="ViewModels\ReservationViewModel.cs" />
     <Compile Include="Controls\HorizontalListView.cs" />
+    <Compile Include="Models\Session.cs" />
+    <Compile Include="Converters\IsVisibleConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />

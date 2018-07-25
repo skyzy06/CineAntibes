@@ -8,8 +8,11 @@ namespace CineAntibes.Controls
 {
     public class HorizontalListView : ScrollView
     {
+        double _width;
+        double _height;
+
         public static readonly BindableProperty ItemsSourceProperty =
-            BindableProperty.Create("ItemsSource", typeof(IEnumerable), typeof(HorizontalListView), default(IEnumerable), propertyChanged: OnItemsSourceChanged);
+            BindableProperty.Create(nameof(ItemsSource), typeof(IEnumerable), typeof(HorizontalListView), default(IEnumerable), propertyChanged: OnItemsSourceChanged);
 
         public IEnumerable ItemsSource
         {
@@ -18,11 +21,20 @@ namespace CineAntibes.Controls
         }
 
         public static readonly BindableProperty ItemTemplateProperty =
-            BindableProperty.Create("ItemTemplate", typeof(DataTemplate), typeof(HorizontalListView), default(DataTemplate));
+            BindableProperty.Create(nameof(ItemTemplate), typeof(DataTemplate), typeof(HorizontalListView), default(DataTemplate));
 
         public DataTemplate ItemTemplate
         {
             get { return (DataTemplate)GetValue(ItemTemplateProperty); }
+            set { SetValue(ItemTemplateProperty, value); }
+        }
+
+        public static readonly BindableProperty SpacingProperty =
+            BindableProperty.Create(nameof(Spacing), typeof(double), typeof(HorizontalListView), 6.0);
+
+        public double Spacing
+        {
+            get { return (double)GetValue(SpacingProperty); }
             set { SetValue(ItemTemplateProperty, value); }
         }
 
@@ -31,9 +43,11 @@ namespace CineAntibes.Controls
             if (ItemTemplate == null || ItemsSource == null)
                 return;
 
-            var layout = new StackLayout
+            StackLayout layout = new StackLayout
             {
-                Orientation = StackOrientation.Horizontal
+                Orientation = Orientation == ScrollOrientation.Vertical
+                    ? StackOrientation.Vertical : StackOrientation.Horizontal,
+                Spacing = Spacing
             };
 
             foreach (var item in ItemsSource)
@@ -43,7 +57,12 @@ namespace CineAntibes.Controls
                 layout.Children.Add(viewCell.View);
             }
 
-            Content = layout;
+            ScrollView container = new ScrollView
+            {
+                Content = layout
+            };
+
+            Content = container;
         }
 
         static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)
@@ -71,9 +90,30 @@ namespace CineAntibes.Controls
             }
         }
 
-        private void HandleCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        void HandleCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             Render();
+        }
+
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            double oldWidth = _width;
+            const double sizenotallocated = -1;
+
+            base.OnSizeAllocated(width, height);
+            if (Equals(_width, width) && Equals(_height, height)) return;
+
+            _width = width;
+            _height = height;
+
+            // ignore if the previous height was size unallocated
+            if (Equals(oldWidth, sizenotallocated)) return;
+
+            // Has the device been rotated ?
+            if (!Equals(width, oldWidth))
+            {
+                Render();
+            }
         }
     }
 }

@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:CineAntibes.Controls"
+             xmlns:converters="clr-namespace:CineAntibes.Converters"
              xmlns:extensions="clr-namespace:CineAntibes.Extensions"
              xmlns:viewModels="clr-namespace:CineAntibes.ViewModels"
              xmlns:ffil="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
@@ -9,26 +10,18 @@
              Title="{Binding CurrentMovie.Title}"
              Style="{StaticResource pageMovieDetail}">
     <ContentPage.BindingContext>
-        <viewModels:MovieDetailViewModel />
+        <viewModels:MovieDetailViewModel x:Name="viewModel" />
     </ContentPage.BindingContext>
     <ContentPage.Resources>
         <ResourceDictionary>
+            <!-- Converters -->
+            <converters:IsVisibleConverter x:Key="isVisibleConverter" />
+            <!-- Styles -->
             <Style x:Key="pageMovieDetail" TargetType="ContentPage">
                 <Setter Property="Padding" Value="10" />
             </Style>
-            <Style x:Key="detailHeader" TargetType="Grid">
-                <Setter Property="RowSpacing" Value="0" />
-            </Style>
-            <Style x:Key="directorAndStars" TargetType="Grid">
-                <Setter Property="ColumnSpacing" Value="0" />
-            </Style>
-            <Style x:Key="sectionTitle" TargetType="Label" BasedOn="{StaticResource h1}">
-                <Setter Property="Margin" Value="0,5,0,0" />
-                <Setter Property="TextColor" Value="{DynamicResource appMainDarkColor}" />
-            </Style>
-            <Style x:Key="rowDetailLayout" TargetType="StackLayout">
-                <Setter Property="Spacing" Value="0" />
-                <Setter Property="Orientation" Value="Horizontal" />
+            <Style x:Key="mainDetailLayout" TargetType="StackLayout">
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
             </Style>
             <Style x:Key="valueHighlighted" TargetType="Label">
                 <Setter Property="FontAttributes" Value="Bold" />
@@ -36,11 +29,91 @@
             <Style x:Key="valueHighlightedColored" TargetType="Label" BasedOn="{StaticResource valueHighlighted}">
                 <Setter Property="TextColor" Value="{DynamicResource appMainDarkColor}" />
             </Style>
+            <Style x:Key="sectionTitle" TargetType="Label" BasedOn="{StaticResource h1}">
+                <Setter Property="Margin" Value="0,5,0,0" />
+                <Setter Property="TextColor" Value="{DynamicResource appMainDarkColor}" />
+            </Style>
+            <Style x:Key="centerLabel" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
+            <Style x:Key="horizontalScrollView" TargetType="controls:HorizontalListView">
+                <Setter Property="Orientation" Value="Horizontal" />
+            </Style>
+            <!-- Styles/Header -->
+            <Style x:Key="detailHeader" TargetType="Grid">
+                <Setter Property="RowSpacing" Value="0" />
+            </Style>
+            <Style x:Key="imagePreview" TargetType="ffil:CachedImage">
+                <Setter Property="HeightRequest" Value="175" />
+                <Setter Property="LoadingPlaceholder" Value="sans_affiche" />
+                <Setter Property="VerticalOptions" Value="StartAndExpand" />
+                <Setter Property="WidthRequest" Value="120" />
+            </Style>
+            <Style x:Key="durationLabel" TargetType="Label" BasedOn="{StaticResource valueHighlighted}">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
+            <Style x:Key="rowDetailLayout" TargetType="StackLayout">
+                <Setter Property="Orientation" Value="Horizontal" />
+                <Setter Property="Spacing" Value="0" />
+            </Style>
+            <Style x:Key="releaseDateLabel" TargetType="Label" BasedOn="{StaticResource valueHighlightedColored}">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
+            <Style x:Key="bookButton" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="VerticalOptions" Value="End" />
+            </Style>
+            <!-- Logos -->
+            <Style x:Key="logosLayout" TargetType="StackLayout">
+                <Setter Property="Padding" Value="5" />
+            </Style>
+            <!-- Sessions -->
+            <Style x:Key="sessionsDayLayout" TargetType="StackLayout">
+                <Setter Property="BackgroundColor" Value="#eeeeee" />
+                <Setter Property="Spacing" Value="0" />
+            </Style>
+            <Style x:Key="sessionsDayHeader" TargetType="StackLayout">
+                <Setter Property="BackgroundColor" Value="{DynamicResource appMainColor}" />
+                <Setter Property="Padding" Value="10,5" />
+                <Setter Property="Spacing" Value="0" />
+            </Style>
+            <Style x:Key="sessionsHeaderLabel" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="LineBreakMode" Value="NoWrap" />
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+            <Style x:Key="listSessionDate" TargetType="controls:HorizontalListView">
+                <Setter Property="Spacing" Value="2" />
+            </Style>
+            <Style x:Key="sessionButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#d3d3d3" />
+                <Setter Property="BorderRadius" Value="5" />
+                <Setter Property="BorderWidth" Value="0" />
+            </Style>
+            <!-- Movie's informations -->
+            <Style x:Key="directorAndStars" TargetType="Grid">
+                <Setter Property="ColumnSpacing" Value="0" />
+            </Style>
+            <Style x:Key="movieWith" TargetType="Label">
+                <Setter Property="HorizontalTextAlignment" Value="End" />
+            </Style>
+            <!-- Photos -->
+            <Style x:Key="photosLayout" TargetType="StackLayout">
+                <Setter Property="Padding" Value="1" />
+            </Style>
+            <Style x:Key="moviePhotos" TargetType="ffil:CachedImage">
+                <Setter Property="Aspect" Value="AspectFill" />
+                <Setter Property="HeightRequest" Value="90" />
+                <Setter Property="WidthRequest" Value="160" />
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout VerticalOptions="FillAndExpand">
+            <StackLayout Style="{StaticResource mainDetailLayout}">
                 <!-- #Region Header: image, duration, ... -->
                 <Grid Style="{StaticResource detailHeader}">
                     <Grid.ColumnDefinitions>
@@ -50,23 +123,73 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
-                    <ffil:CachedImage Source="{Binding CurrentMovie.ImagePreview}" Grid.Column="0" Grid.RowSpan="5" LoadingPlaceholder="sans_affiche" WidthRequest="120" HeightRequest="175" VerticalOptions="StartAndExpand" />
-                    <Label Text="{Binding CurrentMovie.Duration}" Style="{StaticResource valueHighlighted}" VerticalTextAlignment="Center" Grid.Column="1" Grid.Row="0" />
-                    <Label Text="{Binding CurrentMovie.Kinds}" VerticalTextAlignment="Center" Grid.Column="1" Grid.Row="1" />
+                    <ffil:CachedImage Source="{Binding CurrentMovie.ImagePreview}" Style="{StaticResource imagePreview}" Grid.Column="0" Grid.RowSpan="5" />
+                    <Label Text="{Binding CurrentMovie.Duration}" Style="{StaticResource durationLabel}" Grid.Column="1" Grid.Row="0" />
+                    <Label Text="{Binding CurrentMovie.Kinds}" Style="{StaticResource centerLabel}" Grid.Column="1" Grid.Row="1" />
                     <StackLayout Grid.Column="1" Grid.Row="2" Style="{StaticResource rowDetailLayout}">
-                        <Label Text="{extensions:Translate MovieReleaseDate}" VerticalTextAlignment="Center" />
-                        <Label Text="{Binding CurrentMovie.ReleaseDate, StringFormat={extensions:Translate ReleaseDateFormat}}" Style="{StaticResource valueHighlightedColored}" VerticalTextAlignment="Center" />
+                        <Label Text="{extensions:Translate MovieReleaseDate}" Style="{StaticResource centerLabel}" />
+                        <Label Text="{Binding CurrentMovie.ReleaseDate, StringFormat={extensions:Translate ReleaseDateFormat}}" Style="{StaticResource releaseDateLabel}" />
                     </StackLayout>
-                    <Button Margin="0" Text="{extensions:Translate MovieBookButton}" Command="{Binding Reserve}" Grid.Column="1" Grid.Row="3" Grid.RowSpan="2" VerticalOptions="End" />
+                    <Button Text="{extensions:Translate MovieBookButton}" Style="{StaticResource bookButton}" Command="{Binding Reserve}" Grid.Column="1" Grid.Row="3" Grid.RowSpan="2" />
                 </Grid>
                 <!-- #EndRegion -->
                 <!-- #Region Logos: preview, age restriction, ... -->
-                <controls:HorizontalListView ItemsSource="{Binding ListLogos}">
+                <controls:HorizontalListView ItemsSource="{Binding ListLogos}" Style="{StaticResource horizontalScrollView}">
                     <controls:HorizontalListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Padding="5">
+                                <StackLayout Style="{StaticResource logosLayout}">
                                     <ffil:CachedImage Source="{Binding .}" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </controls:HorizontalListView.ItemTemplate>
+                </controls:HorizontalListView>
+                <!-- #EndRegion -->
+                <!-- #Region Booking -->
+                <Label Text="{extensions:Translate VFSessionsSection}" Style="{StaticResource sectionTitle}" IsVisible="{Binding ListVFSessions, Converter={StaticResource  isVisibleConverter}}" />
+                <controls:HorizontalListView ItemsSource="{Binding ListVFSessions}" Style="{StaticResource horizontalScrollView}">
+                    <controls:HorizontalListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Style="{StaticResource sessionsDayLayout}">
+                                    <StackLayout Style="{StaticResource sessionsDayHeader}">
+                                        <Label Text="{Binding Path=Key, StringFormat='{0:ddd}'}" Style="{StaticResource sessionsHeaderLabel}" />
+                                        <Label Text="{Binding Path=Key, StringFormat='{0:dd MMM}'}" Style="{StaticResource sessionsHeaderLabel}" />
+                                    </StackLayout>
+                                    <controls:HorizontalListView ItemsSource="{Binding Path=Value}" Style="{StaticResource listSessionDate}">
+                                        <controls:HorizontalListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <Button Text="{Binding Date, StringFormat={extensions:Translate HourDateFormat}}" Style="{StaticResource sessionButton}" Command="{Binding Reserve, Source={x:Reference viewModel}}" CommandParameter="{Binding .}" />
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </controls:HorizontalListView.ItemTemplate>
+                                    </controls:HorizontalListView>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </controls:HorizontalListView.ItemTemplate>
+                </controls:HorizontalListView>
+                <Label Text="{extensions:Translate VOSessionsSection}" Style="{StaticResource sectionTitle}" IsVisible="{Binding ListVOSessions, Converter={StaticResource  isVisibleConverter}}" />
+                <controls:HorizontalListView ItemsSource="{Binding ListVOSessions}" Style="{StaticResource horizontalScrollView}">
+                    <controls:HorizontalListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Style="{StaticResource sessionsDayLayout}">
+                                    <StackLayout Style="{StaticResource sessionsDayHeader}">
+                                        <Label Text="{Binding Path=Key, StringFormat='{0:ddd}'}" Style="{StaticResource sessionsHeaderLabel}" />
+                                        <Label Text="{Binding Path=Key, StringFormat='{0:dd MMM}'}" Style="{StaticResource sessionsHeaderLabel}" />
+                                    </StackLayout>
+                                    <controls:HorizontalListView ItemsSource="{Binding Path=Value}">
+                                        <controls:HorizontalListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <Button Text="{Binding Date, StringFormat={extensions:Translate HourDateFormat}}" Style="{StaticResource sessionButton}" Command="{Binding Reserve, Source={x:Reference viewModel}}" CommandParameter="{Binding .}" />
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </controls:HorizontalListView.ItemTemplate>
+                                    </controls:HorizontalListView>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
@@ -85,7 +208,7 @@
                     </Grid.RowDefinitions>
                     <Label Text="{extensions:Translate MovieRealizedBy}" Grid.Column="0" Grid.Row="0" />
                     <Label Text="{Binding CurrentMovie.Director}" Style="{StaticResource valueHighlightedColored}" Grid.Column="1" Grid.Row="0" />
-                    <Label Text="{extensions:Translate MovieWith}" Grid.Column="0" Grid.Row="1" HorizontalTextAlignment="End" />
+                    <Label Text="{extensions:Translate MovieWith}" Style="{StaticResource movieWith}" Grid.Column="0" Grid.Row="1" />
                     <Label Text="{Binding CurrentMovie.Stars}" Style="{StaticResource valueHighlightedColored}" Grid.Column="1" Grid.Row="1" />
                 </Grid>
                 <Label Text="{extensions:Translate MovieSynopsis}" Style="{StaticResource sectionTitle}" />
@@ -93,12 +216,12 @@
                 <!-- #EndRegion -->
                 <!-- #Region Previews -->
                 <Label Text="{extensions:Translate MoviePhotos}" Style="{StaticResource sectionTitle}" />
-                <controls:HorizontalListView Orientation="Horizontal" ItemsSource="{Binding ListPhotos}">
+                <controls:HorizontalListView ItemsSource="{Binding ListPhotos}" Style="{StaticResource horizontalScrollView}">
                     <controls:HorizontalListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Padding="1">
-                                    <ffil:CachedImage Source="{Binding .}" WidthRequest="160" HeightRequest="90" Aspect="AspectFill" />
+                                <StackLayout Style="{StaticResource photosLayout}">
+                                    <ffil:CachedImage Source="{Binding .}" Style="{StaticResource moviePhotos}" />
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>

@@ -8,6 +8,8 @@
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="windowActionModeOverlay">true</item>
+
+        <item name="android:textAllCaps">false</item>
         
         <!-- override default accent color to use a generic one for the dialog windows -->
         <item name="colorAccent">#5A5A5A</item>

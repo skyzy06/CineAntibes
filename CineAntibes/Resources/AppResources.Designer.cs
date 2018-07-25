@@ -107,9 +107,27 @@ namespace CineAntibes.Resources {
             }
         }
         
+        public static string MovieReleaseDate {
+            get {
+                return ResourceManager.GetString("MovieReleaseDate", resourceCulture);
+            }
+        }
+        
         public static string MovieBookButton {
             get {
                 return ResourceManager.GetString("MovieBookButton", resourceCulture);
+            }
+        }
+        
+        public static string VFSessionsSection {
+            get {
+                return ResourceManager.GetString("VFSessionsSection", resourceCulture);
+            }
+        }
+        
+        public static string VOSessionsSection {
+            get {
+                return ResourceManager.GetString("VOSessionsSection", resourceCulture);
             }
         }
         
@@ -143,12 +161,6 @@ namespace CineAntibes.Resources {
             }
         }
         
-        public static string MovieReleaseDate {
-            get {
-                return ResourceManager.GetString("MovieReleaseDate", resourceCulture);
-            }
-        }
-        
         public static string SessionDateFormat {
             get {
                 return ResourceManager.GetString("SessionDateFormat", resourceCulture);
@@ -158,6 +170,12 @@ namespace CineAntibes.Resources {
         public static string ReleaseDateFormat {
             get {
                 return ResourceManager.GetString("ReleaseDateFormat", resourceCulture);
+            }
+        }
+        
+        public static string HourDateFormat {
+            get {
+                return ResourceManager.GetString("HourDateFormat", resourceCulture);
             }
         }
         
